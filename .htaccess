@@ -1,0 +1,17 @@
+# Apache production config for Trovery.
+# Has no effect on the PHP built-in server (php -S) — that's expected;
+# it only kicks in when you deploy behind Apache.
+
+# Custom 404 page
+ErrorDocument 404 /404.php
+
+# Prefer index.php as the directory index
+DirectoryIndex index.php
+
+# Hide hidden files (.env, .git, .htaccess itself)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Don't list directories
+Options -Indexes
